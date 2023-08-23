@@ -1,0 +1,652 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background: #101010;
+  padding-left: 10px;
+}
+.header {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background: #000;
+  display: flex;
+  margin-top: 10px;
+  border-radius: 20px;
+  justify-content: space-between;
+}
+.header .header-1 {
+  background: #000;
+  display: flex;
+}
+.header .header-1 img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.header .header-1 h2 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 75px;
+}
+.header .header-1 .header-left-team {
+  background: green;
+  width: 80px;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.header .header-1 .header-left-team ion-icon {
+  color: white;
+}
+.header .header-1 .header-left-team h3 {
+  color: white;
+  font-size: 15px;
+  margin-top: 6px;
+  margin-left: 5px;
+}
+.header .header-2 {
+  line-height: 85px;
+}
+.header .header-2 ion-icon {
+  color: #fff;
+  font-size: 20px;
+}
+/*----menu---*/
+.center-1-1 {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background: #101010;
+}
+.center-1-1 .menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 155px;
+  height: 100%;
+}
+.center-1-1 .menu ion-icon {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+.center-1-1 .menu ion-icon.checked {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+.center-1-1 .menu ion-icon:hover {
+  color: green;
+}
+/*------*/
+.reco {
+  display: flex;
+  justify-content: space-between;
+}
+.reco .recoding {
+  display: flex;
+  margin-top: 10px;
+}
+.reco .recoding ion-icon {
+  color: red;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.reco .recoding h3 {
+  color: white;
+  font-size: 14px;
+}
+.reco .add-user {
+  display: flex;
+  margin-top: 10px;
+}
+.reco .add-user ion-icon {
+  color: white;
+  margin-right: 5px;
+}
+.reco .add-user h3 {
+  color: white;
+  font-size: 14px;
+}
+/*-------*/
+.call {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+.call1 {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+.call .img-call2,
+.call .img-call3,
+.call .img-call4,
+.call .img-call {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*----*/
+.btn-call {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-call .btn-cam {
+  font-size: 20px;
+  padding: 15px 15px;
+  background: #484848;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: #fff;
+}
+.btn-call .btn-mic {
+  font-size: 20px;
+  padding: 15px 15px;
+  background: #484848;
+  border-radius: 10px;
+  margin-right: 20px;
+  color: #fff;
+}
+.btn-call .btn-radio {
+  font-size: 20px;
+  padding: 15px 15px;
+  background: #484848;
+  border-radius: 10px;
+  margin-right: 10px;
+  color: red;
+}
+.btn-call .btn-log {
+  font-size: 20px;
+  padding: 15px 15px;
+  background: #484848;
+  border-radius: 10px;
+  color: #fff;
+}
+.btn-call .btn-call-1 {
+  padding: 20px 20px;
+  font-size: 30px;
+  background: #f02645;
+  border-radius: 20px;
+  margin-right: 20px;
+  color: #fff;
+}
+.hihi2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.hihi1 {
+  display: grid;
+  grid-template-columns: 700px 1fr;
+  grid-template-rows: 200px 200px;
+  grid-gap: 10px;
+}
+
+
+/*-------*/
+.mess {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  height: 80px;
+  background: #1f262e;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.mess ion-icon {
+  color: #fff;
+  font-size: 20px;
+}
+.mess .mess-2 img {
+  margin-top: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.mess1 {
+  position: relative;
+  margin-top: 2px;
+  height: 60px;
+  background: #1f262e;
+}
+.mess1 .mess1-1 {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 30px;
+  background: #080808;
+  border-radius: 20px;
+}
+.mess2 {
+  position: relative;
+  height: 430px;
+  background: #1f262e;
+}
+.mess3 {
+  position: relative;
+  height: 139px;
+  background: #1f262e;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.mess3 h1 {
+  font-size: 10px;
+  color: white;
+}
+.mess3 ion-icon {
+  color: #fff;
+  font-size: 15px;
+}
+.mess3 .mess3-1 {
+  width: 300px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+.mess3 .mess3-1 input {
+  border: none;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 40px;
+  background: none;
+  color: #fff;
+}
+.mess3 .mess3-1 ion-icon {
+  color: white;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 20px;
+}
+.mess3 .mess3-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mess3 .mess3-2 ion-icon {
+  font-size: 100px;
+}
+.mess3 .mess3-2 ion-icon:hover {
+  color: green;
+}
+.close-mess {
+  cursor: pointer;
+}
+
+video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 768px) {
+  video {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+/* #videos {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+#videos video {
+  flex: 1 1 50%;
+  padding: 0;
+  min-width: 0;
+} */
+
+#txtarea::-webkit-scrollbar {
+    display: none;
+}
+#call::-webkit-scrollbar {
+    display: none;
+}
+#txtarea {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+#call {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/*----*/
+.date-meet
+{
+    width: 100%;
+    height: 600px;
+    color: white;
+    display: grid;
+    place-items: center;
+}
+.date-meet .header-minute
+{
+    text-align: center;
+    box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    width: 100%;
+    height: 100px;
+    background: #0f056b;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.date-meet .wrapper-time
+{
+    position: relative;
+    height: 150px;
+    width: 460px;
+    cursor: default;
+    background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+    border-radius: 10px;
+    animation: animate 1.5s linear infinite;
+}
+.date-meet .wrapper-time .display-time,
+.date-meet .wrapper-time span
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.date-meet .wrapper-time span
+{
+    height: 100%;
+    width: 400px;
+    background: inherit;
+    border-radius: 10px;
+}
+.date-meet .wrapper-time span:first-child
+{
+    filter: blur(10px);
+}
+.date-meet .wrapper-time span:last-child 
+{
+    filter: blur(20px);
+}
+.date-meet .wrapper-time .display-time
+{
+    background: #1b1b1b;
+    height: 135px;
+    width: 445px;
+    border-radius: 6px;
+    text-align: center;
+    z-index: 999;
+}
+.date-meet .wrapper-time .display-time #time
+{
+    line-height: 130px;
+
+    font-size: 60px;
+    letter-spacing: 2px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate 1.5s linear infinite;
+}
+/* */
+/* */
+.todoList1
+{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    background: #fff;
+    max-width: 400px;
+    width: 100%;
+    margin: 120px auto;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    display:none;
+}
+.todoList1 header
+{
+    font-size: 30px;
+    font-weight: 600;
+}
+.todoList1 .inputField {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    height: 45px;
+}
+.todoList1 .inputField input {
+    width: 85%;
+    height: 100%;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 17px;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+}
+
+.todoList1 .inputField input:focus {
+    border-color: #8E49E8;
+}
+
+.todoList1 .inputField button {
+    width: 50px;
+    height: 100%;
+    border: none;
+    color: #fff;
+    margin-left: 5px;
+    font-size: 21px;
+    outline: none;
+    background: #8E49E8;
+    cursor: pointer;
+    border-radius: 3px;
+    opacity: 0.6;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.todoList1 .inputField button:hover,
+.todoList1 .footer button:hover {
+    background: #721ce3;
+}
+
+.todoList1 .inputField button.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.wrapper .todoList {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.todoList li {
+    position: relative;
+    list-style: none;
+    margin-bottom: 8px;
+    background: #f2f2f2;
+    border-radius: 3px;
+    padding: 10px 15px;
+    cursor: default;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+.todoList li .icon {
+    position: absolute;
+    right: -45px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #e74c3c;
+    width: 45px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.todoList li:hover .icon {
+    right: 0px;
+}
+
+.wrapper .footer {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer button {
+    padding: 6px 10px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    margin-left: 5px;
+    background: #8E49E8;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.6;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.footer button.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+/* */
+/* */
+.weather-meet {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  background: #fff;
+  display:none;
+  width: 300px;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding-bottom: 50px;
+}
+.app-title {
+  width: 300px;
+  height: 50px;
+  border-radius: 10px 10px 0 0;
+}
+
+.app-title p {
+  text-align: center;
+  padding: 15px;
+  margin: 0 auto;
+  font-size: 1.2em;
+  color: #293251;
+}
+
+.notification {
+  background-color: #f8d7da;
+  display: none;
+}
+
+.notification p {
+  color: #721c24;
+  font-size: 1.2em;
+  margin: 0;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.weather-container {
+  width: 300px;
+  height: 260px;
+  background-color: #F4F9FF;
+}
+
+.weather-icon {
+  width: 300px;
+  height: 128px;
+}
+
+.weather-icon img {
+  display: block;
+  margin: 0 auto;
+}
+
+.temperature-value {
+  width: 300px;
+  height: 60px;
+}
+
+.temperature-value p {
+  padding: 0;
+  margin: 0;
+  color: #293251;
+  font-size: 4em;
+  text-align: center;
+  cursor: pointer;
+}
+
+.temperature-value p:hover {
+}
+
+.temperature-value span {
+  color: #293251;
+  font-size: 0.5em;
+}
+
+.temperature-description {
+}
+
+.temperature-description p {
+  padding: 8px;
+  margin: 0;
+  color: #293251;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.location {
+}
+
+.location p {
+  margin: 0;
+  padding: 0;
+  color: #293251;
+  text-align: center;
+  font-size: 0.8em;
+}

@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.20.0/dist/axios.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.stringee.com/sdk/web/latest/stringee-web-sdk.min.js"
+    ></script>
+    <title>Video Call</title>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9" id="center123">
+          <div class="center1">
+            <div class="row">
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 header"
+                id="vue"
+              >
+                <div class="header-1">
+                  <img
+                    src="https://cdn.glitch.me/7dece3f4-a497-4693-b08b-c2633af97c2c%2Flogo.png?v=1634482376228"
+                    alt=""
+                  />
+                  <h2>Meeting</h2>
+                  <div class="header-left-team">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <h3>Team</h3>
+                  </div>
+                  <div v-if="!roomId" class="header-left-team" style="width: 150px;">
+                    <button
+                      class="btn btn-primary"
+                      style="height:40px;width:150px;"
+                      data-toggle="modal"
+                      data-target="#getname"
+                    >
+                      Create Meeting
+                    </button>
+                  </div>
+                  <div v-if="!roomId" class="header-left-team" style="width: 150px;">
+                    <button
+                      class="btn btn-success"
+                      style="height:40px;width:150px;"
+                      data-toggle="modal"
+                      data-target="#joinWithId"
+                    >
+                      Join Meeting
+                    </button>
+                  </div>
+                  <div v-if="roomId && !name" class="header-left-team" style="width:150px;"> 
+                    <button
+                      class="btn btn-success"
+                      style="height:40px;width:150px;"
+                      data-toggle="modal"
+                      data-target="#joinWithName"
+                    >
+                      Join Meeting
+                    </button>
+                  </div>
+                  <div v-if="room" class="header-left-team">
+                    <button
+                      class="btn btn-success"
+                      style="height:40px;width:90px;"
+                      data-toggle="modal"
+                      data-target="#detais"
+                    >
+                      Invite
+                    </button>
+                  </div>
+                  
+                  <div
+                    class="modal fade"
+                    id="joinWithId"
+                    tabindex="-1"
+                    role="dialog"
+                  >
+                    <div
+                      class="modal-dialog"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Join Meeting
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <input
+                            class="form-control"
+                            id="txtid"
+                            placeholder="Room ID"
+                            style="width: 100%;"
+                          />
+                          <input
+                            class="form-control"
+                            id="txtname3"
+                            placeholder="Username"
+                            style="width: 100%;margin-top: 20px;"
+                          />
+                          <button
+                            type="button"
+                            id="btnsave"
+                            class="btn btn-primary"
+                            data-dismiss="modal"
+                            @click="joinWithId"
+                            style="float: right;margin-top: 10px;"
+                          >
+                            Join
+                          </button>
+                          
+                        </div>
+                        <div class="modal-footer" style="display: inline;">
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div
+                    class="modal fade"
+                    id="joinWithName"
+                    tabindex="-1"
+                    role="dialog"
+                  >
+                    <div
+                      class="modal-dialog"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Join Meeting
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <input
+                            class="form-control"
+                            id="txtname2"
+                            placeholder="Username"
+                            style="width: 100%;"
+                          />
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            id="btnsave"
+                            class="btn btn-primary"
+                            data-dismiss="modal"
+                            @click="joinWithName"
+                          >
+                            Join
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="modal fade"
+                    id="detais"
+                    tabindex="-1"
+                    role="dialog"
+                  >
+                    <div class="modal-dialog modal-lg" role="document" id="vue">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Invite more people</h5>
+                          <button
+                            type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                          >
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div v-if="roomId" style="display: flex;"  class="form-group">
+                            <input id="roomurl" class="form-control" v-model="roomUrl" value=@{{roomUrl}} style="width: 80%;" readonly="readonly" />
+                            <button onclick="copy1();" class="btn btn-success" style="margin-left: 10px;">
+                              Copy
+                            </button>
+                          </div>
+                          <div v-if="roomId" style="display: flex;" class="form-group">
+                            <input id="roomid" class="form-control" v-model="roomId" value="@{{roomId}}" style="width: 80%;" readonly="readonly"/>
+                            <button onclick="copy2();" class="btn btn-success" style="margin-left: 10px;">
+                              Copy
+                            </button>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="modal fade"
+                    id="getname"
+                    tabindex="-1"
+                    role="dialog"
+                  >
+                    <div
+                      class="modal-dialog"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Create Meeting
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <input
+                            class="form-control"
+                            id="roomName"
+                            placeholder="Room name"
+                            style="width: 100%;margin-bottom: 10px;"
+                          />
+                        
+                          <input
+                            class="form-control"
+                            id="txtname"
+                            placeholder="Username"
+                            style="width: 100%;"
+                          />
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            id="btnsave"
+                            class="btn btn-primary"
+                            data-dismiss="modal"
+                            @click="createRoom"
+                          >
+                            Create
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  
+
+                  <div
+                    class="modal fade"
+                    id="setting"
+                    tabindex="-1"
+                    role="dialog"
+                  >
+                    <div
+                      class="modal-dialog modal-dialog-centered"
+                      role="document"
+                    >
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">
+                            Cài đặt
+                          </h5>
+                        </div>
+                        <div class="modal-body">
+                          <h5 style="color:blue;">
+                            Máy ảnh
+                          </h5>
+                          <select class="form-control" id="listCameras">
+                            <option value="">Choose camera</option>
+                          </select>
+                          <h5 style="marginTop: 30px;color:blue;">
+                            Micro
+                          </h5>
+                          <select class="form-control" id="listMicrophones">
+                            <option value="">Choose Microphone</option>
+                          </select>
+                          <h5 style="marginTop: 30px;color:blue;">
+                            Loa
+                          </h5>
+                          <select class="form-control" id="listSpeakers">
+                            <option value="">Choose Speaker</option>
+                          </select>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            id="btnsave"
+                            data-dismiss="modal"
+                            class="btn btn-primary"
+                          >
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div v-if="room" class="header-2">
+                  <ion-icon
+                    name="cloud-circle-outline"
+                    id="iconWea"
+                    style="cursor: pointer;"
+                  ></ion-icon>
+<!--                   <ion-icon name="apps-outline"></ion-icon> -->
+                  <ion-icon style="cursor: pointer;" name="chatbox-ellipses-outline" id="roomchat">
+                  </ion-icon>
+                </div>
+              </div>
+              <div
+                class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 center-1-1"
+              >
+                <div id="vue6">
+                  <div v-if="!room" class="row">
+                    <video
+                      id="localvideo"
+                      style="margin-top: 0;max-width: 100%;position: absolute;height: 100%;width: 100%;"
+                      muted="muted"
+                    ></video>
+                  </div>
+                </div>
+                <div class="row">
+                  <div
+                    class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1 menu"
+                    id="vue5"
+                  >
+                    <ion-icon v-if="room" name="home-outline"></ion-icon>
+                    <ion-icon
+                      name="calendar-outline"
+                      id="calendar"
+                      style="cursor: pointer;"
+                      v-if="room"
+                    ></ion-icon>
+                    <ion-icon
+                      v-if="room"
+                      name="videocam-outline"
+                      class="checked"
+                      id="videocam"
+                      style="cursor: pointer;color: green;"
+                    ></ion-icon>
+                    <ion-icon
+                      v-if="room"
+                      name="document-text-outline"
+                      id="todoL"
+                      style="cursor: pointer;"
+                    ></ion-icon>
+                    <ion-icon
+                      v-if="room"
+                      name="settings-outline"
+                      data-toggle="modal"
+                      data-target="#setting"
+                      style="cursor: pointer;"
+                    ></ion-icon>
+                  </div>
+                  <div
+                    class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 centee"
+                    id="centee"
+                  >
+                    <div class="row">
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 reco"
+                        id="vue4"
+                      >
+                        <div v-if="room" class="recoding">
+                          <ion-icon name="radio-button-on-outline"></ion-icon>
+                          <h3>00:00</h3>
+                        </div>
+                        <!--                         <div class="add-user">
+                          <ion-icon name="person-add-outline"></ion-icon>
+                          <h3>Add User</h3>
+                        </div> -->
+                      </div>
+                      <div
+                        class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 call"
+                        id="call"
+                        style="overflow: auto;"
+                      >
+                        <div class="row" id="videos"></div>
+                      </div>
+                      <div
+                        class=" col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 btn-call"
+                        id="vue2"
+                        v-if="room"
+                      >
+                        <ion-icon
+                          name="videocam-outline"
+                          class="btn-cam"
+                          style="cursor: pointer;background: #f02645;"
+                          id="cam"
+                          @click="disableVideo"
+                        ></ion-icon>
+                        <ion-icon
+                          name="mic-outline"
+                          class="btn-mic"
+                          style="cursor: pointer;background: #f02645;"
+                          @click="disableAudio"
+                          id="mic"
+                        ></ion-icon>
+                        <ion-icon
+                          name="call-outline"
+                          class="btn-call-1"
+                          style="cursor: pointer;"
+                          @click="disconnect"
+                        ></ion-icon>
+                        <ion-icon
+                          name="radio-button-on-outline"
+                          class="btn-radio"
+                        >
+                        </ion-icon>
+                        <ion-icon
+                          name="share-outline"
+                          class="btn-log"
+                          style="cursor: pointer;"
+                          @click="publishscreen"
+                        ></ion-icon>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-12 col-sm-12 col-md-11 col-lg-11 col-xl-11 date-meet"
+                    id="date-meet"
+                    style="display: none;"
+                  >
+                    <div class="wrapper-time">
+                      <div class="display-time">
+                        <div id="time">12:00:00 PM</div>
+                      </div>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3" id="mess123">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mess">
+              <div class="mess-1">
+                <h5 style="color: white;">
+                  Tin nhắn trong cuộc gọi
+                </h5>
+              </div>
+              <div class="mess-2">
+                <ion-icon
+                  name="close-outline"
+                  class="close-mess"
+                  id="close-mess"
+                ></ion-icon>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mess1">
+              <div class="mess1-1">
+                <ion-icon name="people-outline"></ion-icon>
+<!--                 <select id="peopleinroom">
+                  <option value="all">Everyone</option>
+                </select> -->
+                <ion-icon
+                  name="caret-down-outline"
+                  style="margin-left: 5px;"
+                ></ion-icon>
+              </div>
+            </div>
+            <div
+              class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mess2"
+              id="txtarea"
+              style="overflow: auto;"
+            >
+              <!--                 <h1>hihi</h1> -->
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mess3">
+              <div style="display: flex;">
+                <!--                             <h1>Lisa is typing ...</h1> -->
+              </div>
+              <div>
+                <div class="row" id="vue3">
+                  <div
+                    class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 mess3-1"
+                  >
+                    <input type="text" id="txtmsg" placeholder="Message...." />
+                    <!--                     <div style="display: flex;">
+                      <input type="file" id="myfile" accept="image/jpg, image/png">
+                    </div> -->
+                  </div>
+                  <div
+                    class=" col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 mess3-2"
+                  >
+                    <ion-icon
+                      style="cursor: pointer;"
+                      id="sendbtn"
+                      name="send-outline"
+                    ></ion-icon>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Weather-->
+      <div class="weather-meet" id="weather-meet">
+        <div class="app-title">
+          <p>
+            Weather
+            <ion-icon
+              name="close-outline"
+              style="cursor: pointer;"
+              id="close-weather"
+            ></ion-icon>
+          </p>
+        </div>
+        <div class="notification"></div>
+        <div class="weather-container">
+          <div class="weather-icon">
+            <img src="icons/unknown.png" alt="" />
+          </div>
+          <div class="temperature-value">
+            <p>- °<span>C</span></p>
+          </div>
+          <div class="temperature-description">
+            <p>-</p>
+          </div>
+          <div class="location">
+            <p>-</p>
+          </div>
+        </div>
+      </div>
+      <!-- end- Weather-->
+      <!-- To do list-->
+      <div class="todoList1" id="mainTodo">
+        <header>
+          Ghi chú <ion-icon name="close-outline" id="closeTd"></ion-icon>
+        </header>
+        <div class="inputField">
+          <input type="text" placeholder="Add your new todo" />
+          <button>
+            <ion-icon name="add-outline"></ion-icon>
+          </button>
+        </div>
+        <ul class="todoList">
+          <!-- data are comes from local storage -->
+        </ul>
+        <div class="footer">
+          <span
+            >Số việc <span class="pendingTasks"></span> chưa hoàn thành</span
+          >
+          <button>Xóa Hết</button>
+        </div>
+      </div>
+      <!-- End to do list-->
+    </div>
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+    <script src="jquery.js"></script>
+    <script src="socket.io.js"></script>
+    <script src="chat.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+      document.getElementById("mess123").style.display = "none";
+      document.getElementById("center123").className =
+        "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12";
+      
+      setInterval(function(){
+        closeMess();
+        openMess();
+        action();
+      },100);
+      
+      function closeMess() {
+        var btnCloseMess = document.getElementById("close-mess");
+        btnCloseMess.onclick = function() {
+          document.getElementById("mess123").style.display = "none";
+          document.getElementById("center123").className =
+            "col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12";
+        };
+      }
+      function openMess() {
+        var btnRomMess = document.getElementById("roomchat");
+        btnRomMess.onclick = function() {
+          document.getElementById("mess123").style.display = "inline";
+          document.getElementById("center123").className =
+            "col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9";
+        };
+      }
+      //
+
+      function action() {
+        var closeWea = document.getElementById("close-weather");
+        closeWea.onclick = function() {
+          document.getElementById("weather-meet").style.display = "none";
+        };
+        var iconWea = document.getElementById("iconWea");
+        iconWea.onclick = function() {
+          document.getElementById("weather-meet").style.display = "block";
+        };
+        
+        var closeTd = document.getElementById("closeTd");
+        closeTd.onclick = function() {
+          document.getElementById("mainTodo").style.display = "none";
+        };
+        var todoL = document.getElementById("todoL");
+        todoL.onclick = function() {
+          document.getElementById("mainTodo").style.display = "block";
+        };
+      }
+      function copy1() {
+        const content = document.getElementById('roomurl');
+    
+        content.select();
+        document.execCommand('copy');
+      }
+      function copy2() {
+        const content = document.getElementById('roomid');
+    
+        content.select();
+        document.execCommand('copy');
+      }
+    </script>
+  </body>
+</html>
